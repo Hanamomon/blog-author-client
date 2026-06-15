@@ -28,3 +28,11 @@ export async function rootLoader() {
 
   return redirect('/posts');
 }
+
+export async function authLoader() {
+  const user = await getUser();
+
+  if (user?.message) return redirect('/');
+
+  return user;
+}
