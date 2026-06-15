@@ -1,9 +1,9 @@
 import { redirect } from 'react-router';
 
-export default async function authLoader({ pattern }) {
+async function getUser() {
   const token = localStorage.getItem('JWT');
 
-  if (!token) return redirect('/');
+  if (!token) return { message: 'You are not logged in.' };
 
   const response = await fetch('http://localhost:3000/users', {
     headers: {
@@ -11,13 +11,20 @@ export default async function authLoader({ pattern }) {
     },
   });
 
-  if (!response.ok) return redirect('/');
+  if (!response.ok) return { message: 'Request has failed.' };
 
   const user = await response.json();
 
-  if (user.role !== 'AUTHOR') return redirect('/');
-
-  if (pattern === '/') return redirect('/posts');
+  if (user.role !== 'AUTHOR')
+    return { message: 'You are not authorized to access this resource.' };
 
   return user;
+}
+
+export async function rootLoader() {
+  const user = await getUser();
+
+  if (user?.message) return user.message;
+
+  return redirect('/posts');
 }

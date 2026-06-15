@@ -1,13 +1,13 @@
 import App from '@/App/App';
 import loginAction from '@/Login/login-action';
-import authLoader from '@/Login/auth-loader';
+import { rootLoader } from '@/Login/auth-loader';
 import ErrorPage from '@/Error/ErrorPage';
 
 const routes = [
   {
     path: '/',
     element: <App />,
-    loader: authLoader,
+    loader: rootLoader,
     action: loginAction,
     errorElement: <ErrorPage />,
   },
