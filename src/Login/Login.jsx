@@ -31,7 +31,7 @@ export default function Login() {
         <ul>
           {Object.values(errors).map((error) => {
             console.log(error);
-            return <li>{error.message}</li>;
+            return <li key={error.type}>{error.message}</li>;
           })}
         </ul>
       )}
