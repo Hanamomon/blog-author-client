@@ -1,24 +1,44 @@
+import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-import { useSubmit } from 'react-router';
+import { useSubmit, useActionData } from 'react-router';
 
 export default function Login() {
   const {
     register,
     handleSubmit,
+    setError,
+    clearErrors,
     formState: { errors },
   } = useForm();
 
   const submit = useSubmit();
 
+  const actionData = useActionData();
+
+  useEffect(() => {
+    actionData &&
+      Object.entries(actionData).map(([field, error]) => {
+        setError(field, {
+          type: 'server',
+          message: error.message,
+        });
+      });
+  }, [setError, actionData]);
+
   return (
     <main>
       {Object.keys(errors).length > 0 && (
         <ul>
-          {errors?.username && <li>{errors.username.message}</li>}
-          {errors?.password && <li>{errors.password.message}</li>}
+          {Object.values(errors).map((error) => {
+            console.log(error);
+            return <li>{error.message}</li>;
+          })}
         </ul>
       )}
       <form
+        onChange={() => {
+          clearErrors('role');
+        }}
         onSubmit={handleSubmit((data) => {
           submit(data, { action: '/', method: 'POST' });
         })}

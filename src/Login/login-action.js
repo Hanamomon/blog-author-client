@@ -16,7 +16,11 @@ export default async function loginAction({ request }) {
   const data = await response.json();
 
   if (!response.ok) {
-    return data.errors;
+    const errors = {};
+    Object.entries(data.errors).map(([key, value]) => {
+      errors[key] = { message: value.msg };
+    });
+    return errors;
   }
 
   const userResponse = await fetch('http://localhost:3000/users', {
@@ -28,7 +32,7 @@ export default async function loginAction({ request }) {
   const userData = await userResponse.json();
 
   if (userData.role !== 'AUTHOR') {
-    return { role: { msg: 'User is not an author.' } };
+    return { role: { message: 'User is not an author.' } };
   }
 
   localStorage.setItem('JWT', data);
