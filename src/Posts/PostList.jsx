@@ -1,4 +1,5 @@
 import { useLoaderData } from 'react-router';
+import PostPublisher from '@/Posts/PostPublisher';
 
 function PostList() {
   const { postData } = useLoaderData();
@@ -14,17 +15,10 @@ function PostList() {
             return (
               <div key={post.publicId}>
                 <h2>{post.title}</h2>
-                {post.published ? (
-                  <>
-                    <p>Published</p>
-                    <button>Unpublish</button>
-                  </>
-                ) : (
-                  <>
-                    <p>Unpublished</p>
-                    <button>Publish</button>
-                  </>
-                )}
+                <PostPublisher
+                  isPublished={post.published}
+                  postId={post.publicId}
+                />
               </div>
             );
           })}
