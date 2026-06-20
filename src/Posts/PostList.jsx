@@ -1,4 +1,4 @@
-import { useLoaderData } from 'react-router';
+import { Link, useLoaderData } from 'react-router';
 import PostPublisher from '@/Posts/PostPublisher';
 
 function PostList() {
@@ -14,7 +14,9 @@ function PostList() {
           {postData.map((post) => {
             return (
               <div key={post.publicId}>
-                <h2>{post.title}</h2>
+                <h2>
+                  <Link to={'/posts/' + post.publicId}>{post.title}</Link>
+                </h2>
                 <PostPublisher
                   isPublished={post.published}
                   postId={post.publicId}

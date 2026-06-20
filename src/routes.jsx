@@ -27,7 +27,12 @@ const routes = [
         loader: postLoader,
         action: setPublishAction,
       },
-      //      { path: ':postId', component: <PostEntry /> },
+      {
+        path: ':postId',
+        element: <PostEntry />,
+        loader: postEntryLoader,
+        action: postEntryAction,
+      },
       //      { path: 'new', component: <NewPost /> },
     ],
   },
