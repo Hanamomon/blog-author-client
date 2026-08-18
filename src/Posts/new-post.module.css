@@ -1,0 +1,15 @@
+.postForm {
+  display: flex;
+  flex-direction: column;
+
+  gap: 3rem;
+
+  button {
+    align-self: flex-start;
+    background-color: var(--primary-color);
+    color: white;
+
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+  }
+}

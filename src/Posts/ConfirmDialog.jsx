@@ -1,4 +1,5 @@
 import { useRef, useState, useEffect } from 'react';
+import styles from '@/Posts/post-entry.module.css';
 
 function ConfirmDialog({ onDelete }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -14,7 +15,7 @@ function ConfirmDialog({ onDelete }) {
   return (
     <>
       <button onClick={() => setIsOpen(true)}>Delete</button>
-      <dialog ref={dialogRef}>
+      <dialog className={styles.dialog} ref={dialogRef}>
         <p>Are you sure you want to delete this comment?</p>
         <div>
           <button onClick={() => setIsOpen(false)}>Cancel</button>

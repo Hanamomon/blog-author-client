@@ -1,0 +1,116 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+input,
+button,
+textarea {
+  font: inherit;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  text-wrap: balance;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+:root {
+  --bg-color: #f8f6f1;
+  --primary-color: #292929;
+  --secondary-color: #7c858d;
+  --link-color: #2471e5;
+  --area-color: #e4dcc9;
+
+  font-family:
+    ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono',
+    'Courier New', monospace;
+  font-size: 16px;
+}
+
+h2 {
+  font-size: 20px;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--primary-color);
+
+  margin-inline: 80px;
+
+  @media (max-width: 950px) {
+    margin-inline: 25px;
+  }
+}
+
+input {
+  background-color: var(--bg-color);
+  color: var(--primary-color);
+
+  border: none;
+  border-bottom: 1px solid var(--secondary-color);
+}
+
+button {
+  background-color: var(--bg-color);
+  color: var(--primary-color);
+  border: none;
+
+  &:hover {
+    text-decoration: underline;
+    cursor: pointer;
+  }
+}
+
+ul {
+  padding-inline: 0;
+  margin-bottom: 3rem;
+
+  list-style: none;
+}
+
+textarea {
+  width: 100%;
+  max-width: 800px;
+  max-height: 200px;
+  resize: vertical;
+
+  background-color: var(--area-color);
+  border: 1px solid var(--secondary-color);
+  color: var(--primary-color);
+}

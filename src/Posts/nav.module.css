@@ -1,0 +1,14 @@
+.nav {
+  display: flex;
+  gap: 1rem;
+
+  margin: 1rem 0 6rem 0;
+
+  & > form {
+    margin-left: auto;
+  }
+
+  & :global(.active) {
+    font-weight: 700;
+  }
+}

@@ -1,10 +1,11 @@
 import { Form } from 'react-router';
 import { Editor } from '@tinymce/tinymce-react';
+import styles from '@/Posts/new-post.module.css';
 
 function NewPost() {
   return (
     <main>
-      <Form action="/posts/new" method="POST">
+      <Form className={styles.postForm} action="/posts/new" method="POST">
         <div>
           <label htmlFor="title">Title:</label>
           <input name="title" id="title" type="text" />

@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { useSubmit, useActionData } from 'react-router';
+import styles from '@/Login/form.module.css';
 
 export default function Login() {
   const {
@@ -26,7 +27,7 @@ export default function Login() {
   }, [setError, actionData]);
 
   return (
-    <main>
+    <main className={styles.main}>
       {Object.keys(errors).length > 0 && (
         <ul>
           {Object.values(errors).map((error) => {
@@ -36,6 +37,7 @@ export default function Login() {
         </ul>
       )}
       <form
+        className={styles.form}
         onChange={() => {
           clearErrors('role');
         }}

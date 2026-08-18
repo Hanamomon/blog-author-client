@@ -1,8 +1,9 @@
 import { NavLink, Form } from 'react-router';
+import styles from '@/Posts/nav.module.css';
 
 function PostNav() {
   return (
-    <nav>
+    <nav className={styles.nav}>
       <NavLink to="/posts">Home</NavLink>
       {'|'}
       <NavLink to="/posts/new">New Post</NavLink>

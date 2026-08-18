@@ -1,5 +1,6 @@
 import { Link, useLoaderData } from 'react-router';
 import PostPublisher from '@/Posts/PostPublisher';
+import styles from '@/Posts/posts.module.css';
 
 function PostList() {
   const { postData } = useLoaderData();
@@ -10,10 +11,10 @@ function PostList() {
       {postData.length < 1 ? (
         <p>You have not created a post yet.</p>
       ) : (
-        <div>
+        <div className={styles.postList}>
           {postData.map((post) => {
             return (
-              <div key={post.publicId}>
+              <div className={styles.post} key={post.publicId}>
                 <h2>
                   <Link to={'/posts/' + post.publicId}>{post.title}</Link>
                 </h2>
