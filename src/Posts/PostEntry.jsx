@@ -1,6 +1,7 @@
 import { useLoaderData, useFetcher } from 'react-router';
 import { formatDistanceToNow } from 'date-fns';
 import { useState } from 'react';
+import ConfirmDialog from '@/Posts/ConfirmDialog';
 
 function PostEntry() {
   const { postData, commentData } = useLoaderData();
@@ -57,8 +58,8 @@ function PostEntry() {
                     >
                       Edit
                     </button>
-                    <button
-                      onClick={() => {
+                    <ConfirmDialog
+                      onDelete={() => {
                         fetcher.submit(
                           { commentId: comment.id },
                           {
