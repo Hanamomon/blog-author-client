@@ -4,8 +4,6 @@ function ErrorPage() {
   const error = useRouteError();
 
   if (isRouteErrorResponse(error)) {
-    console.log(error);
-
     return (
       <>
         <h1>
@@ -15,10 +13,12 @@ function ErrorPage() {
       </>
     );
   } else if (error instanceof Error) {
-    <div>
-      <h1>Error:</h1>
-      <p>{error.message}</p>
-    </div>;
+    return (
+      <div>
+        <h1>Error:</h1>
+        <p>{error.message}</p>
+      </div>
+    );
   } else {
     return <h1>Unexpected Error</h1>;
   }
