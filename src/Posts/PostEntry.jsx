@@ -6,12 +6,13 @@ function PostEntry() {
   const { postData, commentData } = useLoaderData();
   const fetcher = useFetcher();
   const [isEditing, setIsEditing] = useState(null);
+  const markup = { __html: postData.content.body };
 
   return (
     <main>
       <article>
         <h1>{postData.title}</h1>
-        <p>{postData.content.body}</p>
+        <div dangerouslySetInnerHTML={markup} />
         <time>{formatDistanceToNow(postData.postedAt) + ' ago'}</time>
       </article>
       <section>
