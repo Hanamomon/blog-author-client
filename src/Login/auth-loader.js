@@ -5,7 +5,7 @@ async function getUser() {
 
   if (!token) return { message: 'You are not logged in.' };
 
-  const response = await fetch('http://localhost:3000/users', {
+  const response = await fetch(`${import.meta.env.VITE_API_URL}/users`, {
     headers: {
       Authorization: `Bearer ${token}`,
     },

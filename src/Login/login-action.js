@@ -5,7 +5,7 @@ export default async function loginAction({ request }) {
   const username = formData.get('username');
   const password = formData.get('password');
 
-  const response = await fetch('http://localhost:3000/users/login', {
+  const response = await fetch(`${import.meta.env.VITE_API_URL}/users/login`, {
     method: 'post',
     headers: {
       'Content-Type': 'application/json',
@@ -23,7 +23,7 @@ export default async function loginAction({ request }) {
     return errors;
   }
 
-  const userResponse = await fetch('http://localhost:3000/users', {
+  const userResponse = await fetch(`${import.meta.env.VITE_API_URL}/users`, {
     headers: {
       Authorization: `Bearer ${data}`,
     },

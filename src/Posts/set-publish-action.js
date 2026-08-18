@@ -5,14 +5,17 @@ export default async function setPublishAction({ request }) {
   const publicId = formData.get('id');
   const published = formData.get('published');
 
-  const response = await fetch(`http://localhost:3000/posts/${publicId}`, {
-    method: 'PATCH',
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${token}`,
-    },
-    body: JSON.stringify({ published: !Number(published) }),
-  });
+  const response = await fetch(
+    `${import.meta.env.VITE_API_URL}/posts/${publicId}`,
+    {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({ published: !Number(published) }),
+    }
+  );
 
   if (!response.ok)
     return {

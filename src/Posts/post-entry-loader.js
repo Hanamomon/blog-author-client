@@ -1,6 +1,6 @@
 export default async function postEntryLoader({ params }) {
   const postResponse = await fetch(
-    `http://localhost:3000/posts/${params.postId}`
+    `${import.meta.env.VITE_API_URL}/posts/${params.postId}`
   );
 
   const postData = await postResponse.json();
@@ -8,7 +8,7 @@ export default async function postEntryLoader({ params }) {
   if (!postResponse.ok) return postData?.errors;
 
   const commentResponse = await fetch(
-    `http://localhost:3000/posts/${params.postId}/comments`
+    `${import.meta.env.VITE_API_URL}/posts/${params.postId}/comments`
   );
 
   const commentData = await commentResponse.json();

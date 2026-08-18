@@ -11,7 +11,7 @@ export default async function postEntryAction({ request, params }) {
   switch (method) {
     case 'POST': {
       const response = await fetch(
-        `http://localhost:3000/posts/${postId}/comments`,
+        `${import.meta.env.VITE_API_URL}/posts/${postId}/comments`,
         {
           method: 'POST',
           headers: {
@@ -34,7 +34,7 @@ export default async function postEntryAction({ request, params }) {
     }
     case 'PUT': {
       const response = await fetch(
-        `http://localhost:3000/posts/${postId}/comments/${commentId}`,
+        `${import.meta.env.VITE_API_URL}/posts/${postId}/comments/${commentId}`,
         {
           method: 'PUT',
           headers: {
@@ -57,7 +57,7 @@ export default async function postEntryAction({ request, params }) {
     }
     case 'DELETE': {
       const response = await fetch(
-        `http://localhost:3000/posts/${postId}/comments/${commentId}`,
+        `${import.meta.env.VITE_API_URL}/posts/${postId}/comments/${commentId}`,
         {
           method: 'DELETE',
           headers: {

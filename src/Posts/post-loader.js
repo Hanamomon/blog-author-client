@@ -1,5 +1,5 @@
 export default async function postLoader() {
-  const response = await fetch(`http://localhost:3000/posts/author`, {
+  const response = await fetch(`${import.meta.env.VITE_API_URL}/posts/author`, {
     method: 'get',
     headers: {
       'Content-Type': 'application/json',
